@@ -9,9 +9,9 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-  # Change++ Fall 2023 Coding Challenge
+# Change++ Fall 2023 Coding Challenge
 
-  Due 9/22 at 11:59 PM!
+Due 9/22 at 11:59 PM!
 
 ## Before You Begin
 
