@@ -1,24 +1,30 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import Hint from './components/Hint';
+import Game from './components/Game/Game';
 import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [word, setWord] = useState('');
+  const [hint, setHint] = useState('');
+  const [guess, setGuess] = useState('')
+  const [isCorrect, setIsCorrect] = useState(false);
+
+  useEffect(() => {
+    axios.get('http://localhost:3000/api/random-word').then((response) => {
+      setWord(response.data.word);
+    });
+  }, []);
+  
+  
 
   return (
     <>
-      <h1>Word Unscramble Game </h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <nav class="navbar">
+        <h1>Word Unscramble Game</h1>
+      </nav>
+      <Game scrambledWord={word} />
+      <Hint hint={hint} />
     </>
   )
 }
