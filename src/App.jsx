@@ -7,14 +7,21 @@ import './App.css';
 function App() {
   const [word, setWord] = useState('');
   const [hint, setHint] = useState('');
+  const [scrambledWord, setScrambledWord] = useState('');
   const [guess, setGuess] = useState('')
   const [isCorrect, setIsCorrect] = useState(false);
 
   useEffect(() => {
     axios.get('http://localhost:3000/api/random-word').then((response) => {
       setWord(response.data.word);
+      setScrambledWord(scrambleWord(response.data.word));
+      console.log(response.data.word);
     });
   }, []);
+
+  const scrambleWord = (origWord) => {
+    return origWord.split('').sort(() => Math.random() - 0.5).join('');
+  }
   
   
 
@@ -23,7 +30,7 @@ function App() {
       <nav class="navbar">
         <h1>Word Unscramble Game</h1>
       </nav>
-      <Game scrambledWord={word} />
+      <Game scrambledWord={scrambledWord} />
       <Hint hint={hint} />
     </>
   )

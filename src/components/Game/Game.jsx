@@ -12,7 +12,7 @@ const Game = ({scrambledWord}) => {
                 <div class="letter"></div>
             </div>
             <div class="scrambled-word">
-                <p>{scrambledWord}</p>
+                <p>Scrambled Word: {scrambledWord}</p>
             </div>
             <input type="text" id="guess-input" placeholder="Type your guess"></input>
             <button id="check-button">Check</button>
