@@ -12,7 +12,7 @@ app.use(cors({ origin: 'http://localhost:5173' }));
 
 app.get('/api/random-word', async (req, res) => {
     try {
-        const response = await axios.get('https://wordsapiv1.p.rapidapi.com/words/?random=true', {
+        const response = await axios.get('https://wordsapiv1.p.rapidapi.com/words/?random=true&lettersMax=9&hasDetails=definitions&soundsMax=9', {
             headers: {
                 'X-RapidAPI-Key': key,
                 'X-RapidAPI-Host': 'wordsapiv1.p.rapidapi.com'
@@ -29,7 +29,7 @@ app.get('/api/random-word', async (req, res) => {
 app.get('/api/hint/:word', async (req, res) => {
     const { word } = req.params;
     try {
-        const response = await axios.get('https://wordsapiv1.p.rapidapi.com/words/${word}/definitions', {
+        const response = await axios.get(`https://wordsapiv1.p.rapidapi.com/words/${word}/definitions`, {
             headers: {
                 'X-RapidAPI-Key': key,
                 'X-RapidAPI-Host': 'wordsapiv1.p.rapidapi.com'
