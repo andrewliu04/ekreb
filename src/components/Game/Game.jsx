@@ -30,7 +30,6 @@ const Game = ({ guess, setGuess, wordLength, isCorrect }) => {
   };
 
   useEffect(() => {
-    // Focus on the specified input cell when the component mounts or when gridFocus changes
     if (gridFocus >= 0 && gridFocus < wordLength) {
       document.getElementById(`input-${gridFocus}`).focus();
     }
@@ -53,7 +52,7 @@ const Game = ({ guess, setGuess, wordLength, isCorrect }) => {
     );
   }
 
-  return <div className="wordle-grid">{cells}</div>;
+  return <div className="grid">{cells}</div>;
 };
 
 export default Game;

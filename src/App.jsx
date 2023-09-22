@@ -6,7 +6,7 @@ import './App.css';
 function App() {
   const [word, setWord] = useState('');
   const [hint, setHint] = useState('');
-  const [scrambledWord, setScrambledWord] = useState('');
+  const [scrambledWord, setScrambledWord] = useState();
   const [guess, setGuess] = useState('')
   const [isCorrect, setIsCorrect] = useState(false);
 
@@ -48,8 +48,6 @@ function App() {
 
   const showHint = () => {
     axios.get(`http://localhost:3000/api/hint/${word}`).then((response) => {
-      setWord(response.data.word);
-      setScrambledWord(scrambleWord(response.data.word));
       console.log(response.data.word);
     }).catch((error) => {
       console.error('Failed to get hint', error);
