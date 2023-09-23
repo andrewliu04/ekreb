@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import "./Header.css";
 
 function Header({ onNextWord, points, setPoints }) {
-  const [timer, setTimer] = useState(30);
+  const [timer, setTimer] = useState(20);
 
   // Manages the state of the timer
   useEffect(() => {
     if (timer === 0) {
       onNextWord();
-      setTimer(30);
+      setTimer(20);
       setPoints(points - 100);
     }
 
