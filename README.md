@@ -11,10 +11,20 @@ This project is a fun word unscramble web application built with Vite + React an
 
 To install frontend and backend dependencies:
 
-npm install
+`npm install`
 
 ### Run Project
 
 To run the project:
 
 `npm run dev`
+
+The frontend and backend will run concurrently:
+
+Frontend runs on http://localhost:5173
+
+Backend runs on http://localhost:3000
+
+## Dependencies
+
+vite · react · react-dom · react-toastify · axios · express · concurrently · dotenv · nodemon · cors
