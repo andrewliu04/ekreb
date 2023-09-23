@@ -9,7 +9,7 @@ const key = process.env.VITE_KEY;
 
 app.use(cors({ origin: 'http://localhost:5173' }));
 
-
+//Gets a random word from the WordsAPI, with parameters to make the word more simple
 app.get('/api/random-word', async (req, res) => {
     try {
         const response = await axios.get('https://wordsapiv1.p.rapidapi.com/words/?random=true&lettersMax=9&hasDetails=definitions&soundsMax=9', {
@@ -26,6 +26,7 @@ app.get('/api/random-word', async (req, res) => {
     }
 });
 
+//Gets a hint (the definition of the random word) from WordsAPI
 app.get('/api/hint/:word', async (req, res) => {
     const { word } = req.params;
     try {
@@ -45,6 +46,7 @@ app.get('/api/hint/:word', async (req, res) => {
     }
 })
 
+//Gets the frequency of the random word from WordsAPI
 app.get('/api/freq/:word', async (req, res) => {
     const { word } = req.params;
     try {

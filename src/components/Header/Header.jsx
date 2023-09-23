@@ -4,6 +4,7 @@ import "./Header.css";
 function Header({ onNextWord, points, setPoints }) {
   const [timer, setTimer] = useState(30);
 
+  // Manages the state of the timer
   useEffect(() => {
     if (timer === 0) {
       onNextWord();
@@ -11,6 +12,7 @@ function Header({ onNextWord, points, setPoints }) {
       setPoints(points - 100);
     }
 
+    // Updates timer every second
     const interval = setInterval(() => {
       setTimer((prevTimer) => (prevTimer > 0 ? prevTimer - 1 : prevTimer));
     }, 1000);
