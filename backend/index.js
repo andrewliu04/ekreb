@@ -45,6 +45,25 @@ app.get('/api/hint/:word', async (req, res) => {
     }
 })
 
+app.get('/api/freq/:word', async (req, res) => {
+    const { word } = req.params;
+    try {
+        const response = await axios.get(`https://wordsapiv1.p.rapidapi.com/words/${word}/frequency`, {
+            headers: {
+                'X-RapidAPI-Key': key,
+                'X-RapidAPI-Host': 'wordsapiv1.p.rapidapi.com'
+            },
+        });
+        const frequency = response.data.frequency;
+        res.json({ frequency });
+        console.log(response.data);
+
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({error: 'Failed to get frequency'});
+    }
+})
+
 app.listen(PORT, () => {
     console.log(`Backend is running on http://localhost:${PORT}`);
     console.log(process.env.VITE_KEY);

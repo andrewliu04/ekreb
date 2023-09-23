@@ -1,27 +1,31 @@
-import React, { useState, useEffect } from 'react';
-import './Game.css'; 
+import React, { useState, useEffect } from "react";
+import "./Game.css";
 
-const Game = ({ guess, setGuess, wordLength, isCorrect }) => {
+const Game = ({ guess, setGuess, wordLength, isCorrect, scrambledWord }) => {
   const [gridFocus, setGridFocus] = useState(0);
 
+  //Handles user input for the grid
   const handleInputChange = (e, index) => {
     const inputValue = e.target.value;
-    if (/^[a-zA-Z\s]$/.test(inputValue) || inputValue === '') {
-      const newGuess = guess.split('');
+    //Allows A-Z, a-z, space, hyphen
+    if (/^[a-zA-Z\s-]$/.test(inputValue) || inputValue === "") {
+      const newGuess = guess.split("");
       newGuess[index] = inputValue;
-      setGuess(newGuess.join(''));
+      setGuess(newGuess.join(""));
 
-      if (index < wordLength - 1 && inputValue !== '') {
+      //Set the input focus to the next grid space
+      if (index < wordLength - 1 && inputValue !== "") {
         setGridFocus(index + 1);
       }
     }
   };
 
-  const handleKeyDown = (e, index) => {
-    if (e.key === 'Backspace') {
-      const newGuess = guess.split('');
-      newGuess[index] = '';
-      setGuess(newGuess.join(''));
+  //
+  const handleBackspace = (e, index) => {
+    if (e.key === "Backspace") {
+      const newGuess = guess.split("");
+      newGuess[index] = "";
+      setGuess(newGuess.join(""));
 
       if (index > 0) {
         setGridFocus(index - 1);
@@ -42,9 +46,9 @@ const Game = ({ guess, setGuess, wordLength, isCorrect }) => {
         key={i}
         id={`input-${i}`}
         type="text"
-        value={guess[i] || ''}
+        value={guess[i] || ""}
         onChange={(e) => handleInputChange(e, i)}
-        onKeyDown={(e) => handleKeyDown(e, i)}
+        onKeyDown={(e) => handleBackspace(e, i)}
         maxLength={1}
         className="square-input"
         disabled={isCorrect}
@@ -52,7 +56,13 @@ const Game = ({ guess, setGuess, wordLength, isCorrect }) => {
     );
   }
 
-  return <div className="grid">{cells}</div>;
+  return (
+    <>
+      <p className="unscramble-word">Unscramble the word:</p>
+      <p className="scrambled-word">{scrambledWord}</p>
+      <div className="grid">{cells}</div>
+    </>
+  );
 };
 
 export default Game;
