@@ -38,7 +38,6 @@ app.get('/api/hint/:word', async (req, res) => {
         });
         const hint = response.data.definitions[0]?.definition;
         res.json({ hint });
-        console.log(response.data);
 
     } catch (error) {
         console.error(error);
@@ -58,7 +57,6 @@ app.get('/api/freq/:word', async (req, res) => {
         });
         const frequency = response.data.frequency;
         res.json({ frequency });
-        console.log(response.data);
 
     } catch (error) {
         console.error(error);
