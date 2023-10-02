@@ -68,5 +68,4 @@ app.get('/api/freq/:word', async (req, res) => {
 
 app.listen(PORT, () => {
     console.log(`Backend is running on http://localhost:${PORT}`);
-    console.log(process.env.VITE_KEY);
 });
