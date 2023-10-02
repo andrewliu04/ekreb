@@ -2,7 +2,9 @@
 
 ## Description
 
-This project is a fun word unscramble web application built with Vite + React and Express.js. It is a full-stack web application that fetches data from the WordsAPI through RapidAPI
+This project is a fun word unscramble web application built with Vite + React and Express.js. It is a full-stack web application that fetches data from the WordsAPI through RapidAPI.
+
+![ekreb](https://github.com/andrewliu04/ekreb/assets/57572466/f4396d2c-eb7b-4f5a-a193-c5abe6328a54)
 
 ### Prerequisites
 
